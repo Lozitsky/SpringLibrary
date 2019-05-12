@@ -18,7 +18,7 @@
         <mojarra.version>2.2.19</mojarra.version>
         <primefaces.version>7.0</primefaces.version>
         <hibernate.version>5.4.2.Final</hibernate.version>
-        <mysql-connector.version>8.0.15</mysql-connector.version>
+        <mysql-connector.version>8.0.16</mysql-connector.version>
     </properties>
 
 
@@ -78,6 +78,14 @@
             <artifactId>spring-security-config</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+
 
 
         <!--Logging-->
