@@ -1,29 +1,24 @@
 package com.kirilo.training.springlibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.Collection;
 
 @Entity
-public class Author {
-    private long id;
-    private String fullName;
-    private Date birthday;
+public class Author implements Serializable {
+    private Long id;
 
-    @Id
-    @Column(name = "id")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "full_name")
+    private String fullName;
+
     public String getFullName() {
         return fullName;
     }
@@ -32,8 +27,8 @@ public class Author {
         this.fullName = fullName;
     }
 
-    @Basic
-    @Column(name = "birthday")
+    private Date birthday;
+
     public Date getBirthday() {
         return birthday;
     }
@@ -42,25 +37,13 @@ public class Author {
         this.birthday = birthday;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    private Collection<com.kirilo.training.springlibrary.entities.Book> booksById;
 
-        Author author = (Author) o;
-
-        if (id != author.id) return false;
-        if (fullName != null ? !fullName.equals(author.fullName) : author.fullName != null) return false;
-        if (birthday != null ? !birthday.equals(author.birthday) : author.birthday != null) return false;
-
-        return true;
+    public Collection<com.kirilo.training.springlibrary.entities.Book> getBooksById() {
+        return booksById;
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
-        return result;
+    public void setBooksById(Collection<com.kirilo.training.springlibrary.entities.Book> booksById) {
+        this.booksById = booksById;
     }
 }

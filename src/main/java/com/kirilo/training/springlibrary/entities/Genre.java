@@ -1,28 +1,23 @@
 package com.kirilo.training.springlibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
-public class Genre {
-    private long id;
-    private String name;
-    private Long parent;
+public class Genre implements Serializable {
+    private Long id;
 
-    @Id
-    @Column(name = "id")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
+    private String name;
+
     public String getName() {
         return name;
     }
@@ -31,8 +26,8 @@ public class Genre {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "parent")
+    private Long parent;
+
     public Long getParent() {
         return parent;
     }
@@ -41,25 +36,13 @@ public class Genre {
         this.parent = parent;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    private Collection<com.kirilo.training.springlibrary.entities.Book> booksById;
 
-        Genre genre = (Genre) o;
-
-        if (id != genre.id) return false;
-        if (name != null ? !name.equals(genre.name) : genre.name != null) return false;
-        if (parent != null ? !parent.equals(genre.parent) : genre.parent != null) return false;
-
-        return true;
+    public Collection<com.kirilo.training.springlibrary.entities.Book> getBooksById() {
+        return booksById;
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (parent != null ? parent.hashCode() : 0);
-        return result;
+    public void setBooksById(Collection<com.kirilo.training.springlibrary.entities.Book> booksById) {
+        this.booksById = booksById;
     }
 }

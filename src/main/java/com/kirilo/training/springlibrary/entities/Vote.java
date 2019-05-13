@@ -1,29 +1,27 @@
 package com.kirilo.training.springlibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Vote {
-    private long id;
+    private Long id;
     private Integer value;
-    private long bookId;
+    private Long bookId;
     private String username;
+    private com.kirilo.training.springlibrary.entities.Book bookByBookId;
 
     @Id
-    @Column(name = "id")
-    public long getId() {
+    @Column(name = "id", nullable = false)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "value")
+    @Column(name = "value", nullable = true)
     public Integer getValue() {
         return value;
     }
@@ -33,17 +31,17 @@ public class Vote {
     }
 
     @Basic
-    @Column(name = "book_id")
-    public long getBookId() {
+    @Column(name = "book_id", nullable = false)
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(long bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, length = 100)
     public String getUsername() {
         return username;
     }
@@ -59,9 +57,9 @@ public class Vote {
 
         Vote vote = (Vote) o;
 
-        if (id != vote.id) return false;
-        if (bookId != vote.bookId) return false;
+        if (id != null ? !id.equals(vote.id) : vote.id != null) return false;
         if (value != null ? !value.equals(vote.value) : vote.value != null) return false;
+        if (bookId != null ? !bookId.equals(vote.bookId) : vote.bookId != null) return false;
         if (username != null ? !username.equals(vote.username) : vote.username != null) return false;
 
         return true;
@@ -69,10 +67,20 @@ public class Vote {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (value != null ? value.hashCode() : 0);
-        result = 31 * result + (int) (bookId ^ (bookId >>> 32));
+        result = 31 * result + (bookId != null ? bookId.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
+    public com.kirilo.training.springlibrary.entities.Book getBookByBookId() {
+        return bookByBookId;
+    }
+
+    public void setBookByBookId(com.kirilo.training.springlibrary.entities.Book bookByBookId) {
+        this.bookByBookId = bookByBookId;
     }
 }

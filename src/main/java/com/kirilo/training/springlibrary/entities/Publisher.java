@@ -1,27 +1,23 @@
 package com.kirilo.training.springlibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
-public class Publisher {
-    private long id;
-    private String name;
+public class Publisher implements Serializable {
+    private Long id;
 
-    @Id
-    @Column(name = "id")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
+    private String name;
+
     public String getName() {
         return name;
     }
@@ -30,23 +26,13 @@ public class Publisher {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    private Collection<com.kirilo.training.springlibrary.entities.Book> booksById;
 
-        Publisher publisher = (Publisher) o;
-
-        if (id != publisher.id) return false;
-        if (name != null ? !name.equals(publisher.name) : publisher.name != null) return false;
-
-        return true;
+    public Collection<com.kirilo.training.springlibrary.entities.Book> getBooksById() {
+        return booksById;
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+    public void setBooksById(Collection<com.kirilo.training.springlibrary.entities.Book> booksById) {
+        this.booksById = booksById;
     }
 }

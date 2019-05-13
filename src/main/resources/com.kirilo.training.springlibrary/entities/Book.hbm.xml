@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.kirilo.training.springlibrary.entities.Book" table="book" schema="spring_library">
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(45)" length="45"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="longblob"/>
+        </property>
+        <property name="pageCount">
+            <column name="page_count" sql-type="int(11)"/>
+        </property>
+        <property name="isbn">
+            <column name="isbn" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="genreId">
+            <column name="genre_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="authorId">
+            <column name="author_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="publishYear">
+            <column name="publish_year" sql-type="int(11)"/>
+        </property>
+        <property name="publisherId">
+            <column name="publisher_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="image">
+            <column name="image" sql-type="longblob" not-null="true"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="varchar(5000)" length="5000" not-null="true"/>
+        </property>
+        <property name="rating">
+            <column name="rating" sql-type="int(5)" not-null="true"/>
+        </property>
+        <property name="voteCount">
+            <column name="vote_count" sql-type="bigint(20)" not-null="true"/>
+        </property>
+        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="genreByGenreId" class="com.kirilo.training.springlibrary.entities.Genre">
+            <column name="genre_id"/>
+        </many-to-one>
+        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="authorByAuthorId" class="com.kirilo.training.springlibrary.entities.Author">
+            <column name="author_id"/>
+        </many-to-one>
+        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="publisherByPublisherId" class="com.kirilo.training.springlibrary.entities.Publisher">
+            <column name="publisher_id"/>
+        </many-to-one>
+<!--        <set name="votesById" inverse="true">
+            <key>
+                <column name="book_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.kirilo.training.springlibrary.entities.Vote"/>
+        </set>-->
+    </class>
+</hibernate-mapping>

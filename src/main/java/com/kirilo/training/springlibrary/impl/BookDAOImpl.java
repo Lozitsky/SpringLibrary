@@ -1,8 +1,8 @@
 package com.kirilo.training.springlibrary.impl;
 
+import com.kirilo.training.springlibrary.entities.Book;
 import com.kirilo.training.springlibrary.interfaces.BookSearch;
 import com.kirilo.training.springlibrary.objects.Author;
-import com.kirilo.training.springlibrary.entities.Book;
 import com.kirilo.training.springlibrary.objects.Genre;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

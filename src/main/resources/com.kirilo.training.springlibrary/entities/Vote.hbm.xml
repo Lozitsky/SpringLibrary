@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.kirilo.training.springlibrary.entities.Vote" table="vote" schema="spring_library">
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="value">
+            <column name="value" sql-type="int(5)"/>
+        </property>
+        <property name="bookId">
+            <column name="book_id" sql-type="bigint(20)"/>
+        </property>
+        <property name="username">
+            <column name="username" sql-type="varchar(100)" length="100"/>
+        </property>
+<!--        <many-to-one fetch="join" lazy="false" insert="false" update="false" name="bookByBookId" class="com.kirilo.training.springlibrary.entities.Book">
+            <column name="book_id"/>
+        </many-to-one>-->
+<!--        <set name="booksById" inverse="true">
+            <key>
+                <column name="author_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.kirilo.training.springlibrary.entities.Book"/>
+        </set>-->
+
+    </class>
+</hibernate-mapping>
