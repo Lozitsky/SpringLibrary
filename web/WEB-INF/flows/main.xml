@@ -6,7 +6,7 @@
     <view-state id="main">
 
         <on-render>
-            <evaluate expression="testBean.test()"/>
+            <evaluate expression="bookDAOImpl.getBooks()" result="viewScope.books" result-type="dataModel"/>
         </on-render>
 
     </view-state>

@@ -4,10 +4,9 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.kirilo.training.springlibrary.entities.Vote" table="vote" schema="spring-library">
+    <class name="com.kirilo.training.springlibrary.entities.Genre" table="genre" schema="spring_library">
         <id name="id" column="id"/>
-        <property name="value" column="value"/>
-        <property name="bookId" column="book_id"/>
-        <property name="username" column="username"/>
+        <property name="name" column="name"/>
+        <property name="parent" column="parent"/>
     </class>
 </hibernate-mapping>

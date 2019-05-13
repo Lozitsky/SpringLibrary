@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.kirilo.training.springlibrary.entities.Book" table="book" schema="spring-library">
+    <class name="com.kirilo.training.springlibrary.entities.Book" table="book" schema="spring_library">
         <id name="id" column="id"/>
         <property name="name" column="name"/>
         <property name="content" column="content"/>

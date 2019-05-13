@@ -8,8 +8,16 @@
       xmlns:p="http://primefaces.org/ui"
 >
 <f:view>
-    <h:outputLabel value="Hello, world432432432"/>
-    <p:button value="test button"/>
-    <p:button value="${msg.yes}"/>
+
+    <table>
+        <ui:repeat value="#{books}" var="book">
+            <tr>
+                <td>
+                    #{book.name}
+                </td>
+            </tr>
+        </ui:repeat>
+    </table>
+
 </f:view>
 </html>
