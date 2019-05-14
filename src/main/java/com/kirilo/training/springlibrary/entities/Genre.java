@@ -7,6 +7,9 @@ import java.util.Collection;
 @Entity
 public class Genre implements Serializable {
     private Long id;
+    private String name;
+    private Long parent;
+    private Collection<Book> booksById;
 
     public Long getId() {
         return id;
@@ -16,8 +19,6 @@ public class Genre implements Serializable {
         this.id = id;
     }
 
-    private String name;
-
     public String getName() {
         return name;
     }
@@ -25,8 +26,6 @@ public class Genre implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    private Long parent;
 
     public Long getParent() {
         return parent;
@@ -36,13 +35,11 @@ public class Genre implements Serializable {
         this.parent = parent;
     }
 
-    private Collection<com.kirilo.training.springlibrary.entities.Book> booksById;
-
-    public Collection<com.kirilo.training.springlibrary.entities.Book> getBooksById() {
+    public Collection<Book> getBooksById() {
         return booksById;
     }
 
-    public void setBooksById(Collection<com.kirilo.training.springlibrary.entities.Book> booksById) {
+    public void setBooksById(Collection<Book> booksById) {
         this.booksById = booksById;
     }
 }

@@ -6,22 +6,41 @@ import java.io.Serializable;
 @Entity
 public class Book implements Serializable {
     private Long id;
+    private Author author;
+    private Genre genre;
+    private Publisher publisher;
     private String name;
     private byte[] content;
     private Integer pageCount;
     private String isbn;
-    private Long genreId;
-    private Long authorId;
-    private Integer publishYear;
-    private Long publisherId;
+    //    private Long genreId;
+    //    private Long authorId;
+//    private Long publisherId;
     private byte[] image;
+    private Integer publishYear;
     private String description;
     private Integer rating;
     private Long voteCount;
-    private com.kirilo.training.springlibrary.entities.Genre genreByGenreId;
-    private com.kirilo.training.springlibrary.entities.Author authorByAuthorId;
-    private com.kirilo.training.springlibrary.entities.Publisher publisherByPublisherId;
 //    private Collection<com.kirilo.training.springlibrary.entities.Vote> votesById;
+
+    public Book() {
+    }
+
+    public Book(Long id, Author author, Genre genre, Publisher publisher, String name, byte[] content, Integer pageCount, String isbn, byte[] image, Integer publishYear, String description, Integer rating, Long voteCount) {
+        this.id = id;
+        this.author = author;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.name = name;
+        this.content = content;
+        this.pageCount = pageCount;
+        this.isbn = isbn;
+        this.image = image;
+        this.publishYear = publishYear;
+        this.description = description;
+        this.rating = rating;
+        this.voteCount = voteCount;
+    }
 
     public Long getId() {
         return id;
@@ -29,6 +48,30 @@ public class Book implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public String getName() {
@@ -63,20 +106,12 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public Long getGenreId() {
-        return genreId;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setGenreId(Long genreId) {
-        this.genreId = genreId;
-    }
-
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public Integer getPublishYear() {
@@ -85,22 +120,6 @@ public class Book implements Serializable {
 
     public void setPublishYear(Integer publishYear) {
         this.publishYear = publishYear;
-    }
-
-    public Long getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(Long publisherId) {
-        this.publisherId = publisherId;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 
     public String getDescription() {
@@ -127,31 +146,7 @@ public class Book implements Serializable {
         this.voteCount = voteCount;
     }
 
-    public com.kirilo.training.springlibrary.entities.Genre getGenreByGenreId() {
-        return genreByGenreId;
-    }
-
-    public void setGenreByGenreId(com.kirilo.training.springlibrary.entities.Genre genreByGenreId) {
-        this.genreByGenreId = genreByGenreId;
-    }
-
-    public com.kirilo.training.springlibrary.entities.Author getAuthorByAuthorId() {
-        return authorByAuthorId;
-    }
-
-    public void setAuthorByAuthorId(com.kirilo.training.springlibrary.entities.Author authorByAuthorId) {
-        this.authorByAuthorId = authorByAuthorId;
-    }
-
-    public com.kirilo.training.springlibrary.entities.Publisher getPublisherByPublisherId() {
-        return publisherByPublisherId;
-    }
-
-    public void setPublisherByPublisherId(com.kirilo.training.springlibrary.entities.Publisher publisherByPublisherId) {
-        this.publisherByPublisherId = publisherByPublisherId;
-    }
-
-/*    public Collection<com.kirilo.training.springlibrary.entities.Vote> getVotesById() {
+    /*    public Collection<com.kirilo.training.springlibrary.entities.Vote> getVotesById() {
         return votesById;
     }
 

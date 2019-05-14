@@ -20,17 +20,17 @@
         <property name="isbn">
             <column name="isbn" sql-type="varchar(100)" length="100"/>
         </property>
-        <property name="genreId">
+<!--        <property name="genre">
             <column name="genre_id" sql-type="bigint(20)"/>
         </property>
-        <property name="authorId">
+        <property name="author">
             <column name="author_id" sql-type="bigint(20)"/>
         </property>
+        <property name="publisher">
+            <column name="publisher_id" sql-type="bigint(20)"/>
+        </property>-->
         <property name="publishYear">
             <column name="publish_year" sql-type="int(11)"/>
-        </property>
-        <property name="publisherId">
-            <column name="publisher_id" sql-type="bigint(20)"/>
         </property>
         <property name="image">
             <column name="image" sql-type="longblob" not-null="true"/>
@@ -44,13 +44,13 @@
         <property name="voteCount">
             <column name="vote_count" sql-type="bigint(20)" not-null="true"/>
         </property>
-        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="genreByGenreId" class="com.kirilo.training.springlibrary.entities.Genre">
+        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="genre" class="com.kirilo.training.springlibrary.entities.Genre">
             <column name="genre_id"/>
         </many-to-one>
-        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="authorByAuthorId" class="com.kirilo.training.springlibrary.entities.Author">
+        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="author" class="com.kirilo.training.springlibrary.entities.Author">
             <column name="author_id"/>
         </many-to-one>
-        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="publisherByPublisherId" class="com.kirilo.training.springlibrary.entities.Publisher">
+        <many-to-one insert="false" update="false" fetch="join" lazy="false" not-null="true" name="publisher" class="com.kirilo.training.springlibrary.entities.Publisher">
             <column name="publisher_id"/>
         </many-to-one>
 <!--        <set name="votesById" inverse="true">
