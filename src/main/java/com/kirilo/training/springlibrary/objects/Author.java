@@ -3,18 +3,18 @@ package com.kirilo.training.springlibrary.objects;
 import java.util.Date;
 
 public class Author {
-    private String foolName;
+    private String fullName;
     private Date birthday;
 
     public Author() {
     }
 
-    public String getFoolName() {
-        return foolName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFoolName(String foolName) {
-        this.foolName = foolName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public Date getBirthday() {
@@ -25,8 +25,8 @@ public class Author {
         this.birthday = birthday;
     }
 
-    public Author(String foolName, Date birthday) {
-        this.foolName = foolName;
+    public Author(String fullName, Date birthday) {
+        this.fullName = fullName;
         this.birthday = birthday;
     }
 }

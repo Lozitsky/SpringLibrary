@@ -6,10 +6,7 @@ import com.kirilo.training.springlibrary.objects.Author;
 import com.kirilo.training.springlibrary.objects.Genre;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.ProjectionList;
-import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.*;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,30 +42,40 @@ public class LibraryDAOImpl implements BookSearch {
     @Transactional
     @Override
     public List<Book> getBooks() {
-        DetachedCriteria criteria = DetachedCriteria.forClass(Book.class, "b");
-        createAliases(criteria);
-        List<Book> bookList = createBookList(criteria);
+/*        DetachedCriteria criteria = DetachedCriteria.forClass(Book.class, "b");
+        createAliases(criteria);*/
+        List<Book> bookList = createBookList(createBookCriteria());
         return bookList;
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(Author author) {
-        return null;
+        return createBookList(createBookCriteria().add(Restrictions.ilike("author.full_name", author.getFullName(), MatchMode.ANYWHERE)));
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(Genre genre) {
-        return null;
+        return createBookList(createBookCriteria().add(Restrictions.ilike("author.full_name", genre.getName(), MatchMode.ANYWHERE)));
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(String bookName) {
-        return null;
+        return createBookList(createBookCriteria().add(Restrictions.ilike("b.name", bookName, MatchMode.ANYWHERE)));
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(Character letter) {
-        return null;
+        return createBookList(createBookCriteria().add(Restrictions.ilike("b.name", letter.toString(), MatchMode.START)));
+    }
+
+    private DetachedCriteria createBookCriteria() {
+        DetachedCriteria criteria = DetachedCriteria.forClass(Book.class, "b");
+        createAliases(criteria);
+        return criteria;
     }
 
     private void createAliases(DetachedCriteria detachedCriteria) {
