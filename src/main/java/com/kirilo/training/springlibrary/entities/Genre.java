@@ -11,6 +11,9 @@ public class Genre implements Serializable {
     private Long parent;
     private Collection<Book> booksById;
 
+    public Genre() {
+    }
+
     public Long getId() {
         return id;
     }

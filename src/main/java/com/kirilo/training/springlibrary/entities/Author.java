@@ -12,6 +12,9 @@ public class Author implements Serializable {
     private Date birthday;
     private Collection<Book> booksById;
 
+    public Author() {
+    }
+
     public Long getId() {
         return id;
     }

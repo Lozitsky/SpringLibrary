@@ -8,6 +8,9 @@ import java.util.Collection;
 public class Publisher implements Serializable {
     private Long id;
 
+    public Publisher() {
+    }
+
     public Long getId() {
         return id;
     }

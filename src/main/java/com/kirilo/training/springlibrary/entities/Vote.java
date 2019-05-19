@@ -10,6 +10,9 @@ public class Vote {
     private String username;
     private com.kirilo.training.springlibrary.entities.Book bookByBookId;
 
+    public Vote() {
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     public Long getId() {
@@ -60,9 +63,8 @@ public class Vote {
         if (id != null ? !id.equals(vote.id) : vote.id != null) return false;
         if (value != null ? !value.equals(vote.value) : vote.value != null) return false;
         if (bookId != null ? !bookId.equals(vote.bookId) : vote.bookId != null) return false;
-        if (username != null ? !username.equals(vote.username) : vote.username != null) return false;
+        return username != null ? username.equals(vote.username) : vote.username == null;
 
-        return true;
     }
 
     @Override
