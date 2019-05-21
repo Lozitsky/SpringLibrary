@@ -6,12 +6,12 @@ import com.kirilo.training.springlibrary.objects.Author;
 import com.kirilo.training.springlibrary.objects.Genre;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Repository
+@Component
 public class BookDAOImpl implements BookSearch {
     @Autowired
     private SessionFactory sessionFactory;
