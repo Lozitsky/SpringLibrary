@@ -6,7 +6,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xml:lang="en" lang="en"
 >
 <h:head>
     <title>Facelet Title</title>
@@ -18,7 +17,7 @@
                 <ul>
                     <ui:repeat value="${utils.letters}" var="letter">
                         <li>
-                            <p:commandLink value="#{letter}"/>
+                            <p:commandLink value="#{letter}" action="searchByLetter" actionListener="#{searchCriteria.setLetter(letter)}" ajax="false"/>
                         </li>
                     </ui:repeat>
                 </ul>

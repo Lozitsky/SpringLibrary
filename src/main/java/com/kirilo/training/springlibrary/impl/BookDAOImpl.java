@@ -42,7 +42,11 @@ public class BookDAOImpl implements BookSearch {
     }
 
     @Override
+    @Transactional
     public List<Book> getBooks(Character letter) {
-        return null;
+//        books =
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM book WHERE name LIKE ?1").setParameter(1, letter + "%").addEntity(Book.class).list();
+//        books = sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM book WHERE name LIKE 'b%'").addEntity(Book.class).list();
+//        return books;
     }
 }
