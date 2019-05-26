@@ -13,5 +13,9 @@
             <evaluate expression="libraryFacade.searchBooksByGenre()"/>
         </transition>
 
+        <transition on="searchByText">
+            <evaluate expression="libraryFacade.searchBookByText()"/>
+        </transition>
+
     </view-state>
 </flow>

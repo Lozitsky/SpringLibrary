@@ -15,6 +15,10 @@ public class Author implements Serializable {
     public Author() {
     }
 
+    public Author(String fullName) {
+        this.fullName = fullName;
+    }
+
     public Long getId() {
         return id;
     }

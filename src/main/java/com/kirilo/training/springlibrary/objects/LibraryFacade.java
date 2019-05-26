@@ -1,5 +1,6 @@
 package com.kirilo.training.springlibrary.objects;
 
+import com.kirilo.training.springlibrary.entities.Author;
 import com.kirilo.training.springlibrary.entities.Book;
 import com.kirilo.training.springlibrary.interfaces.BookSearch;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +35,24 @@ public class LibraryFacade {
         return books;
     }
 
-    public void searchBooksByLetter(){
+    public void searchBooksByLetter() {
         books = bookSearch.getBooks(searchCriteria.getLetter());
     }
 
-    public void searchBooksByGenre(){
+    public void searchBooksByGenre() {
         books = bookSearch.getBooks(searchCriteria.getGenre());
+    }
+
+    public void searchBookByText() {
+        switch (searchCriteria.getSearchType()) {
+            case TITLE:
+                books = bookSearch.getBooks(searchCriteria.getText());
+                break;
+            case AUTHOR:
+                books = bookSearch.getBooks(new Author(searchCriteria.getText()));
+                break;
+/*            default:
+                throw new IllegalStateException("Unexpected value: " + searchCriteria.getSearchType());*/
+        }
     }
 }

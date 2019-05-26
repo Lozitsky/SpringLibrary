@@ -27,8 +27,9 @@ public class BookDAOImpl implements BookSearch {
     }
 
     @Override
+    @Transactional
     public List<Book> getBooks(Author author) {
-        return null;
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM book LEFT JOIN author a on book.author_id = a.id WHERE a.full_name LIKE ?1").setParameter(1, "%" + author.getFullName() + "%").addEntity(Book.class).list();
     }
 
     @Override
@@ -38,8 +39,9 @@ public class BookDAOImpl implements BookSearch {
     }
 
     @Override
+    @Transactional
     public List<Book> getBooks(String bookName) {
-        return null;
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM book WHERE name LIKE ?1").setParameter(1, "%" + bookName + "%").addEntity(Book.class).list();
     }
 
     @Override
