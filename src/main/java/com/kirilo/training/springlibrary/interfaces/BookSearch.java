@@ -1,8 +1,8 @@
 package com.kirilo.training.springlibrary.interfaces;
 
 import com.kirilo.training.springlibrary.entities.Book;
-import com.kirilo.training.springlibrary.objects.Author;
-import com.kirilo.training.springlibrary.objects.Genre;
+import com.kirilo.training.springlibrary.entities.Author;
+import com.kirilo.training.springlibrary.entities.Genre;
 
 import java.util.List;
 

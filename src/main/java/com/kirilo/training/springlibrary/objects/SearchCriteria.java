@@ -1,5 +1,6 @@
 package com.kirilo.training.springlibrary.objects;
 
+import com.kirilo.training.springlibrary.entities.Genre;
 import com.kirilo.training.springlibrary.enums.SearchType;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 @Scope("singleton")
 public class SearchCriteria implements Serializable {
     private String text;
-    private SearchType searchType;
+    private SearchType searchType = SearchType.TITLE;
     private Character letter;
     private Genre genre;
 

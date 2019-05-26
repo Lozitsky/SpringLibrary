@@ -3,22 +3,14 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-<!--            <xsl:variable name="txt" value="book name"></xsl:variable>-->
-
-<!--    <input name="bookName" value="book name" type="string"/>-->
-
     <view-state id="main">
-
-
-<!--        <on-render>
-&lt;!&ndash;            <evaluate expression="bookDAOImpl.getBooks()" result="viewScope.books" result-type="dataModel"/>&ndash;&gt;
-&lt;!&ndash;            <evaluate expression="libraryDAOImpl.getBooks()" result="viewScope.books" result-type="dataModel"/>&ndash;&gt;
-            <evaluate expression="libraryDAOImpl.getBooks('name')" result="viewScope.books" result-type="dataModel"/>
-
-        </on-render>-->
 
         <transition on="searchByLetter">
             <evaluate expression="libraryFacade.searchBooksByLetter()"/>
+        </transition>
+
+        <transition on="searchByGenre">
+            <evaluate expression="libraryFacade.searchBooksByGenre()"/>
         </transition>
 
     </view-state>

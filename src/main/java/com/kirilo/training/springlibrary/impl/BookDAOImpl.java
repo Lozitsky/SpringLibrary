@@ -2,8 +2,8 @@ package com.kirilo.training.springlibrary.impl;
 
 import com.kirilo.training.springlibrary.entities.Book;
 import com.kirilo.training.springlibrary.interfaces.BookSearch;
-import com.kirilo.training.springlibrary.objects.Author;
-import com.kirilo.training.springlibrary.objects.Genre;
+import com.kirilo.training.springlibrary.entities.Author;
+import com.kirilo.training.springlibrary.entities.Genre;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,8 +32,9 @@ public class BookDAOImpl implements BookSearch {
     }
 
     @Override
+    @Transactional
     public List<Book> getBooks(Genre genre) {
-        return null;
+        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM book LEFT JOIN genre g on book.genre_id = g.id WHERE g.name LIKE ?1").setParameter(1, genre.getName()).addEntity(Book.class).list();
     }
 
     @Override

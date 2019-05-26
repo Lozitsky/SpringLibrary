@@ -1,6 +1,6 @@
 package com.kirilo.training.springlibrary.interfaces;
 
-import com.kirilo.training.springlibrary.objects.Book;
+import com.kirilo.training.springlibrary.entities.Book;
 
 public interface EditBook {
     boolean save(Book book);

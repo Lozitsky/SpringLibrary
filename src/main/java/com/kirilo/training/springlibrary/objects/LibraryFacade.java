@@ -37,4 +37,8 @@ public class LibraryFacade {
     public void searchBooksByLetter(){
         books = bookSearch.getBooks(searchCriteria.getLetter());
     }
+
+    public void searchBooksByGenre(){
+        books = bookSearch.getBooks(searchCriteria.getGenre());
+    }
 }

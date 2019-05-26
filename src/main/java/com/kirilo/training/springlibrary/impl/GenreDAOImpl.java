@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class GenreDAOImpl implements GenreDAO {
@@ -19,8 +21,11 @@ public class GenreDAOImpl implements GenreDAO {
 
     @Override
     @Transactional
-    public List<Genre> getGenres() {
-        genres = sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM genre").addEntity(Genre.class).list();
+    public Set<Genre> getGenres() {
+        List list = sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM genre").addEntity(Genre.class).list();
+/*        return genres;
+        List list = sessionFactory.getCurrentSession().createCriteria(Genre.class).list();*/
+        Set<Genre> genres = new HashSet<Genre>(list);
         return genres;
     }
 }

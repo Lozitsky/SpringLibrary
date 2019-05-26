@@ -2,8 +2,8 @@ package com.kirilo.training.springlibrary.interfaces;
 
 import com.kirilo.training.springlibrary.entities.Genre;
 
-import java.util.List;
+import java.util.Set;
 
 public interface GenreDAO {
-    List<Genre> getGenres();
+    Set<Genre> getGenres();
 }
