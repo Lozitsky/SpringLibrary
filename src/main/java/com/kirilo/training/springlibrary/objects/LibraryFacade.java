@@ -10,9 +10,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@Component("libraryFacade")
 @Scope("singleton")
 public class LibraryFacade {
+
+    private static final String FIELD_CONTENT = "content";
+
     @Qualifier("bookDAOImpl")
     @Autowired
     private BookSearch bookSearch;
@@ -54,5 +57,10 @@ public class LibraryFacade {
 /*            default:
                 throw new IllegalStateException("Unexpected value: " + searchCriteria.getSearchType());*/
         }
+    }
+
+    public byte[] getContent(long id) {
+        System.out.println("ID: " + id);
+        return bookSearch.getFieldValue(id, FIELD_CONTENT);
     }
 }

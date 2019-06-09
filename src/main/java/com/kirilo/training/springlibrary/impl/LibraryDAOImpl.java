@@ -5,6 +5,7 @@ import com.kirilo.training.springlibrary.entities.Book;
 import com.kirilo.training.springlibrary.entities.Genre;
 import com.kirilo.training.springlibrary.interfaces.BookSearch;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.*;
 import org.hibernate.transform.Transformers;
@@ -70,6 +71,16 @@ public class LibraryDAOImpl implements BookSearch {
     @Override
     public List<Book> getBooks(Character letter) {
         return createBookList(createBookCriteria().add(Restrictions.ilike("b.name", letter.toString(), MatchMode.START)));
+    }
+
+    @Transactional
+    @Override
+    public byte[] getFieldValue(long id, String fieldName) {
+        Session session = sessionFactory.getCurrentSession();
+        javax.persistence.criteria.CriteriaQuery<Book> criteriaQuery = session.getCriteriaBuilder().createQuery(Book.class);
+        criteriaQuery.from(Book.class);
+        return session.createQuery(criteriaQuery).getSingleResult().getContent();
+
     }
 
     private DetachedCriteria createBookCriteria() {
