@@ -13,6 +13,12 @@
         </param-value>
     </context-param>
 
+<!--    https://docs.spring.io/autorepo/docs/webflow/2.4.1.RELEASE/reference/htmlsingle/#spring-faces-security-taglib -->
+    <context-param>
+        <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+        <param-value>/WEB-INF/springsecurity.taglib.xml</param-value>
+    </context-param>
+
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
