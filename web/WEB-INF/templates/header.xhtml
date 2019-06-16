@@ -18,13 +18,13 @@
             </div>
 
             <div class="social">
-                <a> <h:graphicImage library="images" name="vk.jpg" width="16" height="13"/></a>
-                <a> <h:graphicImage library="images" name="facebook.jpg" width="16" height="13"/></a>
+                <a> <h:graphicImage library="images" name="vk.jpg" width="16" height="16"/></a>
+                <a> <h:graphicImage library="images" name="facebook.jpg" width="16" height="16"/></a>
             </div>
             <div class="aut">
                 <p>username</p>
                 <h:form>
-                    <h:commandLink value="${msg.exit}"/>
+                        <a href="${request.contextPath}/app/logout">${msg.exit}</a>
                 </h:form>
             </div>
         </div>

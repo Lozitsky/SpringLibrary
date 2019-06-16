@@ -106,3 +106,7 @@ body {
 .div-login-button table{
     height: 50px;
 }
+
+.login_form .ui-panelgrid-cell {
+    border-width: 0px;
+}
