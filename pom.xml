@@ -12,7 +12,7 @@
     <properties>
         <webflow.version>2.5.1.RELEASE</webflow.version>
         <spring-framework.version>5.0.9.RELEASE</spring-framework.version>
-        <spring-security.version>5.0.8.RELEASE</spring-security.version>
+        <spring-security.version>5.2.10.RELEASE</spring-security.version>
         <slf4j.version>1.7.26</slf4j.version>
         <!--        <mojarra-version>2.2.16</mojarra-version>-->
         <mojarra.version>2.2.19</mojarra.version>
